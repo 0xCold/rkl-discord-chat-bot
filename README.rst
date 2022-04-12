@@ -1,1 +1,1 @@
-Discord bot tracking sale updates of the Rumble Kong League NFT collection on OpenSea.
+Discord chat bot for the Rumble Kong League NFT collection.

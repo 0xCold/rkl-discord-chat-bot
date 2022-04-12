@@ -108,12 +108,15 @@ def updateAssetCache(collection):
     params = {
         "collection_slug": Globals.COLLECTIONS[collection]["slug"],
         "only_opensea": "true",
+        "event_type": "created",
         "occured_after": cache["updated"]
     }
 
     page = fetchOpenSeaAsset(Globals.OPENSEA_EVENTS_URL, params)
     for event in page["asset_events"]:
-        None
+        id = event["asset"]["token_id"]
+        if id in cache["assets"]:
+            cache["assets"][id]["listing_price"] = event["starting_price"]
 
     cache["updated"] = timestamp
     Util.writeJson(path, cache)
